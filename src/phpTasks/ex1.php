@@ -1,5 +1,3 @@
-
-
 <html>
 <head>
     <title>Exercise 1: Getting Started with PHP - Gino</title>
@@ -58,7 +56,7 @@ echo "<h4>$title</h4>";
 <br>
 
 <div>
-<img src="img_1.JPG" width="80%">
+<img src="img_1.JPG" width="50%">
 </div>
 
 </body>
