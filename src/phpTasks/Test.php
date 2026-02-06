@@ -54,11 +54,6 @@
             background-color: #084d1a;
         }
 
-        nav a.active {
-        background-color: #0b6623; /* dark green */
-        }
-
-
         main {
             padding: 20px;
             flex: 1;
@@ -99,13 +94,10 @@
 <div class="container">
 
 <nav>
-    <a href="main.php">Home</a>
-    <a href="ex1.php" class="active">Exercise 1</a>
-    <a href="ex2.php">Exercise 2</a>
-    <a href="ex3.php">Exercise 3</a>
-    <a href="ex4.php">Exercise 4</a>
-    <a href="ex5.php">Exercise 5</a>
-    <a href="ex6.php">Exercise 6</a>
+    <a href="#" class="home">Home</a>
+    <a href="#" class="active">Exercise 1</a>
+    <a href="#">Exercise 2</a>
+    <a href="#">Exercise 3</a>
 </nav>
 
     <main>

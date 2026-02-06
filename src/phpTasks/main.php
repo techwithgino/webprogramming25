@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Exercise 2: Create universal header, footer, or sidebar - Gino</title>
+    <title>Home - Web Programming Exercises</title>
 
     <style>
         body {
@@ -46,20 +46,34 @@
             background-color: #333;
         }
 
-        nav a.active {
-            background-color: #0b6623; /* dark green */
+        nav a.home {
+            background-color: #0b6623;
         }
 
-        /* Main content */
+        nav a.home:hover {
+            background-color: #084d1a;
+        }
+
+        nav a.active {
+            background-color: #0b6623;
+        }
+
+        /* Main content with background */
         main {
-            padding: 20px;
+            padding: 40px;
             flex: 1;
             text-align: center;
+
+            /* background image */
+            background-image: url("img_2.jpg");
+            background-size: cover;
+            background-position: center;
+            color: #fff;
         }
 
-        main img {
-            max-width: 80%;
-            height: auto;
+        main h2 {
+            font-size: 32px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
         }
 
         /* Footer */
@@ -76,15 +90,15 @@
 <body>
 
 <header>
-    Web Programming Exercises
+    My Web Programming Exercises
 </header>
 
 <div class="container">
 
     <nav>
-        <a href="main.php">Home</a>
+        <a href="main.php" class="home active">Home</a>
         <a href="ex1.php">Exercise 1</a>
-        <a href="ex2.php" class="active">Exercise 2</a>
+        <a href="ex2.php">Exercise 2</a>
         <a href="ex3.php">Exercise 3</a>
         <a href="ex4.php">Exercise 4</a>
         <a href="ex5.php">Exercise 5</a>
@@ -92,7 +106,8 @@
     </nav>
 
     <main>
-        <img src="img_3.jpg" alt="Exercise Image">
+        <h2></h2>
+        <!-- You can add more content here if you want -->
     </main>
 
 </div>

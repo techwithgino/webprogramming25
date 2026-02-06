@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<?php include 'header.php';?>
+<?php include 'header_2.php';?>
 
 <main>
 
@@ -15,7 +15,7 @@
 
 </main>
 
-    <?php include 'footer.php';?>
+    <?php include 'footer_1.php';?>
 
 </body>
 </html>
