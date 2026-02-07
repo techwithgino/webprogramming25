@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html>
-
 <?php include 'header_2.php';?>
 
 <main>
@@ -21,5 +18,3 @@
 
     <?php include 'footer_1.php';?>
 
-</body>
-</html>

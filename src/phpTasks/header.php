@@ -5,6 +5,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 <!DOCTYPE html>
 <html>
 <head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <title>Web Programming Exercises</title>
 
     <style>
@@ -22,72 +26,48 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             font-weight: bold;
         }
 
-        /* Layout */
-        .container {
-            display: flex;
-            min-height: calc(100vh - 140px);
-        }
-
-        /* Sidebar */
-        nav {
-            width: 200px;
+        /* Top navigation */
+        .top-nav {
             background-color: #f5f5f5;
-            padding: 20px;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
         }
 
-        nav a {
-            display: block;
+        .top-nav a {
             background-color: #000;
             color: #fff;
             text-decoration: none;
-            padding: 10px;
-            margin-bottom: 10px;
+            padding: 10px 15px;
             font-weight: bold;
-            text-align: center;
             border-radius: 4px;
         }
 
-        nav a:hover {
+        .top-nav a:hover {
             background-color: #333;
         }
 
-        nav a.home {
-            background-color: #0b6623;
-        }
-
-        nav a.home:hover {
-            background-color: #084d1a;
-        }
-
-        nav a.active {
+        .top-nav a.active {
             background-color: #0b6623;
         }
 
         /* Main content */
         main {
             padding: 40px;
-            flex: 1;
             text-align: center;
+        }
+        main.full-bg {
+            background-image: url('img_2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: calc(90vh - 200px);
+            color: white;
+
             display: flex;
-            flex-direction: column;
-            align-items: center; /* centers all content */
-        }
-
-        /* Table styling */
-        table {
-            border-collapse: collapse;
-            width: 350px;
-            margin: 20px auto; /* centers the table */
-        }
-
-        th, td {
-            border: 1px solid #000;
-            padding: 10px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #f0f0f0;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Footer */
@@ -98,6 +78,21 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             font-size: 14px;
             color: #333;
         }
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;   /* centers the table */
+            width: 350px;
+        }
+
+        th, td {
+            border: 1px solid black; /* THIS is the border */
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
     </style>
 </head>
 <body>
@@ -106,10 +101,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     My Web Programming Exercises
 </header>
 
-<div class="container">
-
-<nav>
-    <a href="main.php" class="home <?php if($currentPage=='main.php') echo 'active'; ?>">Home</a>
+<nav class="top-nav">
+    <a href="main.php" class="<?php if($currentPage=='main.php') echo 'active'; ?>">Home</a>
     <a href="ex1.php" class="<?php if($currentPage=='ex1.php') echo 'active'; ?>">Exercise 1</a>
     <a href="ex2.php" class="<?php if($currentPage=='ex2.php') echo 'active'; ?>">Exercise 2</a>
     <a href="ex3.php" class="<?php if($currentPage=='ex3.php') echo 'active'; ?>">Exercise 3</a>
