@@ -82,7 +82,7 @@
     <!-- 000000000000000000000000000000000000000000000000000000000000000000000000000000000000 -->
 
     <div class="mt-4">
-        <h4>Print 1 to n (While Loop)</h4>
+        <h4>Exercise 5 - 6 (While Loop)</h4>
         <form method="post" class="row g-3 justify-content-center">
             <div class="col-md-4">
                 <input type="number" name="n_while" class="form-control" placeholder="Enter a number" required>
@@ -110,7 +110,7 @@
     <!-- 000000000000000000000000000000000000000000000000000000000000000000000000000000000000 -->
 
     <div class="mt-4">
-        <h4>Foreach Loop (Array)</h4>
+        <h4>Exercise 4 - 6 (Foreach Loop)</h4>
         <?php
         $myarray = array("HTML", "CSS", "PHP", "JavaScript");
 
