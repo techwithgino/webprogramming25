@@ -8,7 +8,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <title>Web Programming Exercises</title>
 
     <style>
@@ -102,7 +102,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 </header>
 
 <nav class="top-nav">
-    <a href="main.php" class="<?php if($currentPage=='main.php') echo 'active'; ?>">Home</a>
+    <a href="index.php" class="<?php if($currentPage=='index.php') echo 'active'; ?>">Home</a>
     <a href="ex1.php" class="<?php if($currentPage=='ex1.php') echo 'active'; ?>">Exercise 1</a>
     <a href="ex2.php" class="<?php if($currentPage=='ex2.php') echo 'active'; ?>">Exercise 2</a>
     <a href="ex3.php" class="<?php if($currentPage=='ex3.php') echo 'active'; ?>">Exercise 3</a>
