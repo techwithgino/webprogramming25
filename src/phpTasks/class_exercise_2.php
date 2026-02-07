@@ -2,7 +2,7 @@
 <html>
 <head>
 
-    <?php include 'header_2.php';?>
+    <?php include 'class_exercise_header.php';?>
 
     <main>
         <h2>About This Website</h2>
@@ -15,7 +15,7 @@
         </p>
     </main>
 
-    <?php include 'footer_1.php';?>
+    <?php include 'class_exercise_footer.php';?>
 
 </body>
 </html>
