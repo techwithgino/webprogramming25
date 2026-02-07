@@ -1,16 +1,10 @@
-<?php
-$currentPage = basename($_SERVER['PHP_SELF']);
-?>
-
-<!DOCTYPE html>
-<html>
 <head>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Web Programming Exercises</title>
 
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
@@ -64,7 +58,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            min-height: calc(100vh - 200px);
+            min-height: calc(90vh - 200px);
             color: white;
 
             display: flex;
@@ -97,18 +91,3 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         }
     </style>
 </head>
-<body>
-
-<header>
-    My Web Programming Exercises
-</header>
-
-<nav class="top-nav">
-    <a href="index.php" class="<?php if($currentPage=='index.php') echo 'active'; ?>">Home</a>
-    <a href="ex1.php" class="<?php if($currentPage=='ex1.php') echo 'active'; ?>">Exercise 1</a>
-    <a href="ex2.php" class="<?php if($currentPage=='ex2.php') echo 'active'; ?>">Exercise 2</a>
-    <a href="ex3.php" class="<?php if($currentPage=='ex3.php') echo 'active'; ?>">Exercise 3</a>
-    <a href="ex4.php" class="<?php if($currentPage=='ex4.php') echo 'active'; ?>">Exercise 4</a>
-    <a href="ex5.php" class="<?php if($currentPage=='ex5.php') echo 'active'; ?>">Exercise 5</a>
-    <a href="ex6.php" class="<?php if($currentPage=='ex6.php') echo 'active'; ?>">Exercise 6</a>
-</nav>
