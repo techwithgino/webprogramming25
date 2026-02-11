@@ -109,4 +109,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <a href="ex2.php" class="<?php if($currentPage=='ex2.php') echo 'active'; ?>">Exercise 2</a>
     <a href="ex3.php" class="<?php if($currentPage=='ex3.php') echo 'active'; ?>">Exercise 3</a>
     <a href="ex4.php" class="<?php if($currentPage=='ex4.php') echo 'active'; ?>">Exercise 4</a>
+    <a href="ex5.php" class="<?php if($currentPage=='ex5.php') echo 'active'; ?>">Exercise 5</a>
+    <a href="ex6.php" class="<?php if($currentPage=='ex6.php') echo 'active'; ?>">Exercise 6</a>
+    <a href="ex7.php" class="<?php if($currentPage=='ex7.php') echo 'active'; ?>">Exercise 7</a>
+
 </nav>
