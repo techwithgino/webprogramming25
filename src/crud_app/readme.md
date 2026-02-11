@@ -12,9 +12,9 @@ The project follows **Scrum methodology** for planning and development.
 ## 📖 Table of Contents
 
 - [Team Roles & Responsibilities (Scrum)](#team-roles--responsibilities-scrum)
-  - [Product Owner – Katarina Vasic](#-product-owner)
-  - [Scrum Master – Gino Canoy](#-scrum-master)
-  - [Developer – Roberto Campana](#-developers)
+  - [Product Owners](#-product-owners)
+  - [Scrum Master](#-scrum-master)
+  - [Developer](#-developers)
 - [User Stories](#user-stories)
   - [Visitor / Client User Stories](#-visitor--client-user-stories)
   - [Admin User Stories](#-admin-user-stories)
