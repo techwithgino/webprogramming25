@@ -3,7 +3,7 @@
 **Project Name:** CNSS Tech Website
 **Team Number:** 1
 
-This is a **student Web Programming project** for CNSS Tech, an IT service provider.
+This is a **student Web Programming project** for CNSS Tech company, an IT Network and System Solutions provider.
 The goal is to develop a **functional and user-friendly website** that showcases CNSS Tech services and allows admin management of content.
 The project follows **Scrum methodology** for planning and development.
 
