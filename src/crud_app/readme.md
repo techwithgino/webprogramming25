@@ -36,11 +36,11 @@ For this project, our 3-member team applied Scrum in a student-friendly way to s
 
 ---
 
-### 👩‍💼 Katarina Vasic - Gino Canoy - Roberto Campana — Product Owners
+### Product Owners – Katarina Vasic, Gino Canoy, Roberto Campana
 
 **Responsibilities:**
 - Define the project vision and website goals
-- Manage and prioritized the Product Backlog
+- Manage and prioritize the Product Backlog
 - Write and organize user stories for Visitors and Admin
 - Review completed sprint features and ensure requirements were met
 
@@ -52,7 +52,7 @@ For this project, our 3-member team applied Scrum in a student-friendly way to s
 
 ---
 
-### 👨‍💻 Gino Canoy — Scrum Master
+### Scrum Master – Gino Canoy
 
 **Responsibilities:**
 - Facilitate sprint planning, reviews, and team discussions
@@ -68,7 +68,7 @@ For this project, our 3-member team applied Scrum in a student-friendly way to s
 
 ---
 
-### 👨‍💻 Katarina Vasic - Roberto Campana - Gino Canoy — Developers
+### Developers – Katarina Vasic, Roberto Campana, Gino Canoy
 
 **Responsibilities:**
 - Develop backend functionality using PHP
@@ -97,7 +97,7 @@ Write user stories to define website features from the user’s perspective and 
 
 ---
 
-## 🔹 Visitor / Client User Stories
+## Visitor / Client User Stories
 
 | User Story | Benefit |
 |------------|---------|
@@ -108,7 +108,7 @@ Write user stories to define website features from the user’s perspective and 
 
 ---
 
-## 🔹 Admin User Stories
+## Admin User Stories
 
 | User Story | Benefit |
 |------------|---------|
@@ -119,7 +119,7 @@ Write user stories to define website features from the user’s perspective and 
 
 ---
 
-## 🗂 Organizing User Stories
+## Organizing User Stories
 
 - **High Priority (Sprint 1–2):** Website structure, Add/Edit Services, Display Services & About
 - **Medium Priority (Sprint 3):** Contact Form, Manage Testimonials, Responsive UI
@@ -129,7 +129,7 @@ Write user stories to define website features from the user’s perspective and 
 
 # 📋 Sprint Task Distribution
 
-### 🏁 Sprint 1 – Website Setup
+### Sprint 1 – Website Setup
 
 | Task | Assigned To |
 |------|-------------|
@@ -140,7 +140,7 @@ Write user stories to define website features from the user’s perspective and 
 
 ---
 
-### 🏁 Sprint 2 – Core Website Features
+### Sprint 2 – Core Website Features
 
 | Task | Assigned To |
 |------|-------------|
@@ -151,7 +151,7 @@ Write user stories to define website features from the user’s perspective and 
 
 ---
 
-### 🏁 Sprint 3 – Contact & Testimonials
+### Sprint 3 – Contact & Testimonials
 
 | Task | Assigned To |
 |------|-------------|
@@ -162,7 +162,7 @@ Write user stories to define website features from the user’s perspective and 
 
 ---
 
-### 🏁 Sprint 4 – Security, Styling & Documentation
+### Sprint 4 – Security, Styling & Documentation
 
 | Task | Assigned To |
 |------|-------------|
@@ -173,7 +173,7 @@ Write user stories to define website features from the user’s perspective and 
 
 ---
 
-# 🔄 Team Collaboration Approach
+# Team Collaboration Approach
 
 - Regular mini-standups to discuss progress and blockers
 - Technical issues, such as Docker or database connections, solved collaboratively
@@ -182,7 +182,7 @@ Write user stories to define website features from the user’s perspective and 
 
 ---
 
-# 📈 Agile Benefits Observed
+# Agile Benefits Observed
 
 - Clear role distribution improved focus and accountability
 - Incremental development allowed testing and feedback at each sprint
@@ -191,7 +191,7 @@ Write user stories to define website features from the user’s perspective and 
 
 ---
 
-# 💻 Project Summary
+# Project Summary
 
 This student project demonstrates:
 
