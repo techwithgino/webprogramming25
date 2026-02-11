@@ -45,7 +45,7 @@ For this project, our 3-member team applied Scrum in a student-friendly way to s
 - Review completed sprint features and ensure requirements were met
 
 **Key Contributions:**
-- Define website structure (Home, About, Services, Contact)
+- Define website structure (Home, About, Services, Solutions, Contact, People)
 - Prioritize high-value features for early sprints
 - Review functionality for both Visitor and Admin
 - Coordinate final documentation and presentation
