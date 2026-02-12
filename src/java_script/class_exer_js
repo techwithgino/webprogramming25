@@ -1,0 +1,22 @@
+
+document.write
+object + dot + method()
+
+document.getElementId("test")
+
+onclick
+onload,
+
+<button onclick='getElementId("demo").innerHtml=Date()'>
+    The time is?
+</button>
+
+Syntax
+<script>JavaScript Code</script>
+
+<!DOCTYPE html>
+<html lang="en"
+
+<head>
+    meta 
+</head>
