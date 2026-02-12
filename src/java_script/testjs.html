@@ -11,12 +11,32 @@
     </head>
 
 <body>
-    <h2>
+<!--    <h2>
         Test MySQL Connection
     </h2>
 
     <form action="test1.php" method="get">
         <button type="submit">Test Connection</button>
     </form>
+-->
+<div id="container">This is a container</div>
+<button id="button">Click me please!!!</button>
+
+<h1 id="header">
+    hello test 1
+</h1>
+
+<p id="paragraph">This is a test paragraph
+</p>
+<button onclick="changeContent()">Click me please!!!</button>
+
+
+<script>
+    function changeContent(){
+        document.getElementById("header").innerHTML = "I am a new header"
+    }
+    var headerElement = document.getElementById("header");
+    console.log(headerElement);
+</script>
 </body>
 </html>
