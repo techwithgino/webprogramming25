@@ -52,14 +52,14 @@ else
     echo "File copy successful.<br>";
 
     // RENAME()
-    if(rename('filecopy.txt', 'folder1/newfile.txt'))
+    if(rename('filecopy.txt', 'newfile.txt'))
     {
         echo "<br>File renamed successfully";
     }
     else {echo "<br>Cannot rename the file.";}
     // --------------------------------------------- 
     // unlink(): Deleting a file
-    if(unlink('folder1/newfile.txt'))
+    if(unlink('newfile.txt'))
     {echo "<br>File deleted successfully";}
     else {echo "<br>Unable to delete the file.";}
     

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Upload Preview</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+    #preview {
+      margin-top: 20px;
+      max-width: 400px;
+      max-height: 400px;
+      border: 2px solid #ccc;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Upload an Image</h1>
+  <input type="file" id="fileInput" accept="image/*">
+  <div>
+    <img id="preview" src="" alt="Your uploaded image will appear here">
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const preview = document.getElementById('preview');
+
+    fileInput.addEventListener('change', function() {
+      const file = this.files[0]; // get the first file selected
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          preview.src = e.target.result; // display the image
+        }
+        reader.readAsDataURL(file); // read the file as a URL
+      }
+    });
+  </script>
+
+</body>
+</html>
