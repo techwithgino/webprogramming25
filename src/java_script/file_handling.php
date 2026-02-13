@@ -88,18 +88,19 @@ else
 
     /* ********************************************************* DIY
     echo "<hr><h2> Reading from a remote file.</h2>";
-    // 'rb' mode to open non-text files
     
-    // $handle = fopen("https://yle.fi/", "rb");
-    // if (FALSE === $handle)
-    // {
-    //     exit("ERROR. Unable to open stream to URL.");
-    // }
-    // $contents = stream_get_contents($handle);
-    // echo $contents;
-    // fclose($handle);
+    //'rb' mode to open non-text files*/
+    
+    $handle = fopen("https://yle.fi/", "rb");
+    if (FALSE === $handle)
+    {
+        exit("ERROR. Unable to open stream to URL.");
+    }
+    $contents = stream_get_contents($handle);
+    echo $contents;
+    fclose($handle);
 
-    // ALTERNATE METHOD TO THE ABOVE ONE
+    // ALTERNATE METHOD TO THE ABOVE ONE*/
     $ch = curl_init("https://yle.fi/news/tuoreimmat");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     
@@ -118,15 +119,14 @@ else
     }
     
     curl_close($ch);
-    */    
+        
 
     /* *********************************************************
-    // Uploading Files: https://www.php.net/manual/en/features.file-upload.php
-    <hr><h2> File Upload Example </h2>
-    <form enctype="multipart/form-data" action="upload.php" method="POST">
-        select file to upload: <input name="userfile" type="file" required><br>
-        <input type="submit" value="Upload File" >
-    </form>
+    // Uploading Files: https://www.php.net/manual/en/features.file-upload.php*/
+<hr><h2>File Upload Example</h2>
 
-    */
-}
+<form enctype="multipart/form-data" action="upload.php" method="POST">
+    Select file to upload:
+    <input name="userfile" type="file" required><br>
+    <input type="submit" value="Upload File">
+</form>
