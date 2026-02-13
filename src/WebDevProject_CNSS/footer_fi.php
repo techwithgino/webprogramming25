@@ -1,5 +1,5 @@
 <footer>
-    <p>&copy; 2026 CNSS Tech. Teknologialla liiketoiminnan eteenpäinvieminen.</p>
+    <p>&copy; 2026 CNSS Tech. Teknologialla Liiketoiminnan Eteenpäinvieminen.</p>
 
     <?php
     $filename = basename($_SERVER['PHP_SELF']);

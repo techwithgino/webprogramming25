@@ -16,10 +16,14 @@
 <header>
     <div class="container">
         <div class="brand">
-            <a href="index_fi.php">
+            <a href="index.php">
                 <img src="images/10_img_logo.PNG" alt="CNSS Tech Logo" class="logo-blend">
             </a>
-            <span class="brand-name">CNSS Tech</span>
+
+            <div class="brand-text">
+                <span class="brand-name">CNSS Tech</span>
+                <span class="brand-tagline">Teknologialla Liiketoiminnan Eteenpäinvieminen</span>
+            </div>
         </div>
     
         <div class="navigation">
