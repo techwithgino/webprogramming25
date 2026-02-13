@@ -8,6 +8,7 @@
     <meta name="description" content="CNSS Tech tarjoaa ammattimaisia IT-verkko- ja järjestelmäpalveluita sekä IT-konsultointia Suomessa."/>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/10_img_logo.PNG">
 </head>
 
 <body>

@@ -8,6 +8,7 @@
     <meta name="description" content="CNSS Tech provides professional IT Network & System Services and IT Consultancy in Finland."/>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/10_img_logo.PNG">
 </head>
 
 <body>
