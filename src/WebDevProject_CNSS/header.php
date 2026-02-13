@@ -23,7 +23,7 @@
         </div>
     
         <div class="navigation">
-            <a href="index.php" class="home-btn">CNSS Tech</a>
+            <a href="index.php">CNSS Tech</a>
             <a href="#services">Services</a>
             <a href="#solutions">Solutions</a>
             <a href="#about">About</a>

@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
 
-<main style="display: flex; justify-content: center; align-items: center; min-height: calc(82vh - 120px); padding: 1rem;">
+<main style="display: flex; justify-content: center; align-items: center; min-height: calc(87vh - 120px); padding: 1rem;">
     <div style="max-width: 800px; width: 100%;">
         <a href="index.php" class="btn-back">Back to Main</a>
             <h1>IT Network Services</h1>

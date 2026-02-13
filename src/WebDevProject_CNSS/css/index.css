@@ -108,8 +108,6 @@
         display: flex;
         flex-direction: column;
         height: 100%;
-        text-align: center;
-        align-items: center;
     }
 
     .service-box h3 {
@@ -123,9 +121,8 @@
     .service-box p {
         flex-grow: 1;
         min-height: 90px;
-        display: block;
-        margin: 0;
-        text-align: center;
+        display: flex;
+        align-items: flex-start;
     }
 
     .service-btn {
@@ -140,6 +137,7 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
+
     }
 
     .service-btn:hover {
@@ -161,8 +159,6 @@
         padding: 2rem;
         border-radius: 6px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        text-align: center;
-        align-items: center;
     }
 
     .solution-box h3 {
@@ -204,31 +200,4 @@
         background: #ffffff;
         color: #00887A;
     }
-    .navigation a.home-btn {
-    font-weight: bold;
-    color: #003135 !important;
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-    background-color: #00b894;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    }
 
-    .navigation a.home-btn:hover {
-        background-color: #009675;
-        color: #003135 !important;
-    }
-    html, body {
-        height: 100%;
-        margin: 0;
-    }
-
-    .page-container {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-
-    .content {
-        flex: 1;
-    }
