@@ -16,7 +16,7 @@
 <header>
     <div class="container">
         <div class="brand">
-            <a href="index.php">
+            <a href="index_fi.php">
                 <img src="images/10_img_logo.PNG" alt="CNSS Tech Logo" class="logo-blend">
             </a>
 
