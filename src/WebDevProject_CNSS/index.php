@@ -22,7 +22,7 @@
                     Design, installation, configuration, and maintenance of
                     secure and scalable network infrastructures.
                 </p>
-                <a href="it_services_eng.php" class="service-btn">Learn More</a>
+                <a href="it_services_en.php" class="service-btn">Learn More</a>
             </div>
 
             <div class="service-box">
@@ -30,7 +30,7 @@
                 <p>
                     Server setup, monitoring, backups, and performance tuning to keep your systems secure and reliable.
                 </p>
-                <a href="system_ad_eng.php" class="service-btn">Learn More</a>
+                <a href="system_ad_en.php" class="service-btn">Learn More</a>
             </div>
 
             <div class="service-box">
@@ -39,7 +39,7 @@
                     Strategic IT advice, technology planning, and problem-solving
                     tailored to your business needs.
                 </p>
-                <a href="it_consultancy_eng.php" class="service-btn">Learn More</a>
+                <a href="it_consultancy_en.php" class="service-btn">Learn More</a>
             </div>
 
             <div class="service-box">
@@ -48,7 +48,7 @@
                     Network security, troubleshooting, and ongoing IT support
                     to protect and support your operations.
                 </p>
-                <a href="security_eng.php" class="service-btn">Learn More</a>
+                <a href="security_en.php" class="service-btn">Learn More</a>
             </div>
 
         </div>

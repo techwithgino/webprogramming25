@@ -4,7 +4,7 @@
     <div class="container">
         <h2>Luotettavat IT-verkko- ja järjestelmäratkaisut</h2>
         <p>
-            CNSS Tech tarjoaa ammattimaisia IT-verkko- ja järjestelmäpalveluita sekä asiantuntevaa IT-konsultointia, 
+            CNSS Tech tarjoaa ammattimaisia IT-verkko- ja järjestelmäpalveluita sekä asiantuntevaa IT-konsultointia,
             auttaen yrityksiä pysymään turvassa, yhteydessä ja tehokkaina.
         </p>
         <a href="#contact" class="btn">Ota yhteyttä</a>
@@ -21,7 +21,7 @@
                 <p>
                     Suunnittelu, asennus, konfigurointi ja ylläpito turvallisten ja skaalautuvien verkkoinfrastruktuurien rakentamiseksi.
                 </p>
-                <a href="it_services_fin.html" class="service-btn">Lisätietoja</a>
+                <a href="it_services_fi.php" class="service-btn">Lisätietoja</a>
             </div>
 
             <div class="service-box">
@@ -29,7 +29,7 @@
                 <p>
                     Palvelinympäristön pystytys, valvonta, varmuuskopiot ja järjestelmän optimointi luotettavuuden ja suorituskyvyn varmistamiseksi.
                 </p>
-                <a href="system_ad_fin.html" class="service-btn">Lisätietoja</a>
+                <a href="system_ad_fi.php" class="service-btn">Lisätietoja</a>
             </div>
 
             <div class="service-box">
@@ -37,7 +37,7 @@
                 <p>
                     Strateginen IT-neuvonta, teknologiasuunnittelu ja ongelmanratkaisu yrityksesi tarpeisiin räätälöitynä.
                 </p>
-                <a href="it_consultancy_fin.html" class="service-btn">Lisätietoja</a>
+                <a href="it_consultancy_fi.php" class="service-btn">Lisätietoja</a>
             </div>
 
             <div class="service-box">
@@ -45,7 +45,7 @@
                 <p>
                     Verkkoturva, ongelmanratkaisu ja jatkuva IT-tuki liiketoimintasi suojaamiseksi ja tukemiseksi.
                 </p>
-                <a href="security_fin.html" class="service-btn">Lisätietoja</a>
+                <a href="security_fi.php" class="service-btn">Lisätietoja</a>
             </div>
 
         </div>
