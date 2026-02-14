@@ -113,7 +113,7 @@
             <label class="checkbox-line">
             <input type="checkbox" id="terms" name="terms">
             <span>
-                By submitting this form, you confirm that you agree to the storing and processing of your personal data by CNSS Tech.
+                By submitting this form, you confirm that you agree to the storing and processing of your personal data by CNSS Tech as described in the 
                 <!-- Same tab: keep data via autosave -->
                 <a href="privacy-policy.php" onclick="if(window.cnssSaveDraft){cnssSaveDraft();}">Privacy Policy</a>.
             </span>
