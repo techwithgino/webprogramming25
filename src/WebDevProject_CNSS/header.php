@@ -32,7 +32,7 @@
             <a href="#services">Services</a>
             <a href="#solutions">Solutions</a>
             <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+            <a href="form.php">Contact</a>
         </div>
 
         <div class="language">

@@ -1,0 +1,439 @@
+db.php
+=================================
+<?php
+$servername = "db"; // Replace with your MySQL server hostname
+$username = "admin";     // Replace with your MySQL username
+$password = "Password123";     // Replace with your MySQL password
+$dbname = "cnsstech_db";       // Replace with the name of your MySQL database
+
+// Create a database connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
+==================================
+table in DB
+
+
+CREATE TABLE userquery (
+    sn INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email_add VARCHAR(50) NOT NULL,
+    company_name VARCHAR(50) NULL,
+    phone_num VARCHAR(50) NULL,
+    query VARCHAR(500) NOT NULL
+);
+
+
+==================================
+
+form.php
+
+<?php include 'header.php'; ?>
+
+<div class="container mt-5">
+    <h2>Submit Your Query</h2>
+
+    <form name="form1" method="post" action="process.php" 
+          onsubmit="return validateForm()" enctype="multipart/form-data">
+
+        <!-- First & Last Name -->
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    <label for="first_name">First Name:</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name"
+                           onkeyup="checkName()" placeholder="Enter first name" required>
+                </div>
+                <div class="col">
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name"
+                           placeholder="Enter last name" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email_add">Email Address:</label>
+            <input type="email" class="form-control" id="email_add" name="email_add"
+                   onblur="checkEmail()" placeholder="Enter email address" required>
+        </div>
+
+        <!-- Company Name -->
+        <div class="form-group">
+            <label for="company_name">Company Name (Optional):</label>
+            <input type="text" class="form-control" id="company_name" name="company_name"
+                   placeholder="Enter company name">
+        </div>
+
+        <!-- Phone Number -->
+        <div class="form-group">
+            <label for="phone_num">Phone Number (Optional):</label>
+            <input type="text" class="form-control" id="phone_num" name="phone_num"
+                   placeholder="Enter phone number">
+        </div>
+
+        <!-- Query -->
+        <div class="form-group">
+            <label for="query">Your Query:</label>
+            <textarea class="form-control" id="query" name="query" rows="5" maxlength="500"
+                      placeholder="Type your query here (min 10 characters)" required></textarea>
+        </div>
+
+        <!-- File Upload -->
+        <div class="form-group">
+            <label for="attachment">Attach a file (Optional, max 2MB):</label>
+            <input type="file" class="form-control" id="attachment" name="attachment" 
+                   accept=".pdf,.doc,.docx,.png,.jpg">
+        </div>
+
+        <!-- Terms & Conditions -->
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="terms" name="terms"
+                   onclick="termsClicked()" required>
+            <label class="form-check-label" for="terms">
+                I agree to the <a href="terms.php" target="_blank">Terms and Conditions</a>
+            </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+
+    </form>
+</div>
+
+<!-- JS Validation -->
+<script>
+// Main form validation
+function validateForm() {
+    let firstName = document.getElementById("first_name").value.trim();
+    let lastName  = document.getElementById("last_name").value.trim();
+    let email     = document.getElementById("email_add").value.trim();
+    let query     = document.getElementById("query").value.trim();
+    let terms     = document.getElementById("terms").checked;
+    let fileInput = document.getElementById("attachment");
+
+    // Name validation (letters only)
+    let namePattern = /^[A-Za-z]+$/;
+    if (!namePattern.test(firstName)) { alert("First name must contain letters only."); return false; }
+    if (!namePattern.test(lastName))  { alert("Last name must contain letters only."); return false; }
+
+    // Email validation
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!emailPattern.test(email)) { alert("Please enter a valid email address."); return false; }
+
+    // Query length
+    if (query.length < 10) { alert("Query must be at least 10 characters."); return false; }
+
+    // Terms checkbox
+    if (!terms) { alert("You must accept the Terms and Conditions."); return false; }
+
+    // File validation
+    if (fileInput.files.length > 0) {
+        let file = fileInput.files[0];
+        let allowedExtensions = ['pdf','doc','docx','png','jpg'];
+        let fileExt = file.name.split('.').pop().toLowerCase();
+        if (!allowedExtensions.includes(fileExt)) { alert("Invalid file type."); return false; }
+        if (file.size > 2*1024*1024) { alert("File too large. Max 2MB."); return false; }
+    }
+
+    return true;
+}
+
+// onkeyup event
+function checkName() {
+    let firstName = document.getElementById("first_name");
+    let lastName  = document.getElementById("last_name");
+    let pattern = /^[A-Za-z]*$/;
+
+    firstName.style.border = pattern.test(firstName.value) ? "2px solid green" : "2px solid red";
+    lastName.style.border  = pattern.test(lastName.value)  ? "2px solid green" : "2px solid red";
+}
+
+// onblur event
+function checkEmail() {
+    let email = document.getElementById("email_add").value;
+    if (email === "") alert("Email cannot be empty.");
+}
+
+// onclick event
+function termsClicked() {
+    console.log("Terms checkbox clicked.");
+}
+</script>
+
+<?php include 'footer.php'; ?>
+
+=========================================================================
+
+process.php
+
+
+<?php
+if (isset($_POST['submit'])) {
+    include 'db.php';
+
+    // Server-side validation
+    if (!isset($_POST['terms'])) {
+        die("You must accept the Terms and Conditions.");
+    }
+
+    $first_name   = trim($_POST['first_name']);
+    $last_name    = trim($_POST['last_name']);
+    $email_add    = trim($_POST['email_add']);
+    $company_name = !empty($_POST['company_name']) ? trim($_POST['company_name']) : NULL;
+    $phone_num    = !empty($_POST['phone_num']) ? trim($_POST['phone_num']) : NULL;
+    $query        = trim($_POST['query']);
+
+    // File upload handling
+    $attachment = NULL;
+    if (isset($_FILES['attachment']) && $_FILES['attachment']['error'] == 0) {
+        $allowed = ['pdf','doc','docx','png','jpg'];
+        $fileName = $_FILES['attachment']['name'];
+        $fileTmp  = $_FILES['attachment']['tmp_name'];
+        $fileExt  = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+        if (!in_array($fileExt, $allowed)) {
+            die("Invalid file type. Allowed: pdf, doc, docx, png, jpg.");
+        }
+
+        if ($_FILES['attachment']['size'] > 2*1024*1024) {
+            die("File too large. Max 2MB.");
+        }
+
+        if (!is_dir("uploads")) mkdir("uploads", 0777, true);
+        $newName = uniqid() . "_" . basename($fileName);
+        $destination = "uploads/" . $newName;
+
+        if (move_uploaded_file($fileTmp, $destination)) {
+            $attachment = $destination;
+        } else {
+            die("Failed to upload file.");
+        }
+    }
+
+    // Insert into database
+    $stmt = $conn->prepare("INSERT INTO userquery 
+        (first_name, last_name, email_add, company_name, phone_num, query, attachment)
+        VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssss", $first_name, $last_name, $email_add, $company_name, $phone_num, $query, $attachment);
+
+    if ($stmt->execute()) {
+        // Display a clean "Thank You" page after submission
+        include 'header.php';
+        echo '<div class="container mt-5">';
+        echo '<h2>Thank You!</h2>';
+        echo '<p>Thank you for reaching out to CNSS Tech. Our team will review your inquiry and respond as soon as possible.</p>';
+        echo '<a href="index.php" class="btn btn-primary">Back to Home</a>';
+        echo '</div>';
+        include 'footer.php';
+        exit; // stop further execution
+    } else {
+        echo "<div class='alert alert-danger'>Error: ".$stmt->error."</div>";
+    }
+
+    $stmt->close();
+    $conn->close();
+}
+?>
+
+================================================================================================================
+read.php
+
+<?php
+include 'db.php';
+
+$sql = "SELECT * FROM userquery";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    echo "<table class='table table-bordered'>
+            <thead>
+                <tr>
+                    <th>SN</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Company</th>
+                    <th>Phone</th>
+                    <th>Query</th>
+                    <th>Attachment</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>";
+
+    while ($row = $result->fetch_assoc()) {
+        $fileLink = $row['attachment'] ? "<a href='{$row['attachment']}' target='_blank'>View</a>" : "No file";
+        echo "<tr>
+                <td>{$row['sn']}</td>
+                <td>{$row['first_name']}</td>
+                <td>{$row['last_name']}</td>
+                <td>{$row['email_add']}</td>
+                <td>{$row['company_name']}</td>
+                <td>{$row['phone_num']}</td>
+                <td>{$row['query']}</td>
+                <td>$fileLink</td>
+                <td><a href='updatesingle.php?sn={$row['sn']}' class='btn btn-sm btn-warning'>Edit/Delete</a></td>
+            </tr>";
+    }
+
+    echo "</tbody></table>";
+} else {
+    echo "<div class='alert alert-info'>No submissions found.</div>";
+}
+
+$conn->close();
+?>
+
+=====================================================================
+updatesingle.php
+
+<?php
+include 'db.php';
+
+if (!isset($_GET['sn'])) {
+    die("Invalid request.");
+}
+
+$sn = intval($_GET['sn']);
+$result = mysqli_query($conn, "SELECT * FROM userquery WHERE sn='$sn'");
+$row = mysqli_fetch_assoc($result);
+
+if (!$row) die("Record not found.");
+
+// Handle Update
+if (isset($_POST['submit'])) {
+    $first_name   = trim($_POST['first_name']);
+    $last_name    = trim($_POST['last_name']);
+    $email_add    = trim($_POST['email_add']);
+    $company_name = !empty($_POST['company_name']) ? trim($_POST['company_name']) : NULL;
+    $phone_num    = !empty($_POST['phone_num']) ? trim($_POST['phone_num']) : NULL;
+    $query        = trim($_POST['query']);
+
+    // File upload
+    $attachment = $row['attachment']; // keep old file if not updated
+    if (isset($_FILES['attachment']) && $_FILES['attachment']['error'] == 0) {
+        $allowed = ['pdf','doc','docx','png','jpg'];
+        $fileName = $_FILES['attachment']['name'];
+        $fileTmp  = $_FILES['attachment']['tmp_name'];
+        $fileExt  = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+        if (!in_array($fileExt, $allowed)) {
+            die("Invalid file type.");
+        }
+
+        if ($_FILES['attachment']['size'] > 2*1024*1024) {
+            die("File too large. Max 2MB.");
+        }
+
+        if (!is_dir("uploads")) mkdir("uploads", 0777, true);
+        $newName = uniqid() . "_" . basename($fileName);
+        $destination = "uploads/" . $newName;
+
+        if (move_uploaded_file($fileTmp, $destination)) {
+            if ($attachment && file_exists($attachment)) unlink($attachment); // delete old file
+            $attachment = $destination;
+        } else {
+            die("Failed to upload file.");
+        }
+    }
+
+    $stmt = $conn->prepare("UPDATE userquery SET first_name=?, last_name=?, email_add=?, company_name=?, phone_num=?, query=?, attachment=? WHERE sn=?");
+    $stmt->bind_param("sssssssi", $first_name, $last_name, $email_add, $company_name, $phone_num, $query, $attachment, $sn);
+
+    if ($stmt->execute()) {
+        echo "<div class='alert alert-success'>Record updated successfully.</div>";
+    } else {
+        echo "<div class='alert alert-danger'>Error: ".$stmt->error."</div>";
+    }
+}
+
+// Handle Delete
+if (isset($_POST['delete'])) {
+    if ($row['attachment'] && file_exists($row['attachment'])) unlink($row['attachment']);
+    mysqli_query($conn, "DELETE FROM userquery WHERE sn='$sn'");
+    echo "<div class='alert alert-success'>Record deleted.</div>";
+    echo "<a href='read.php' class='btn btn-primary'>Back to list</a>";
+    exit;
+}
+?>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="text" name="first_name" value="<?php echo htmlspecialchars($row['first_name']); ?>" required><br>
+    <input type="text" name="last_name" value="<?php echo htmlspecialchars($row['last_name']); ?>" required><br>
+    <input type="email" name="email_add" value="<?php echo htmlspecialchars($row['email_add']); ?>" required><br>
+    <input type="text" name="company_name" value="<?php echo htmlspecialchars($row['company_name']); ?>"><br>
+    <input type="text" name="phone_num" value="<?php echo htmlspecialchars($row['phone_num']); ?>"><br>
+    <textarea name="query" required><?php echo htmlspecialchars($row['query']); ?></textarea><br>
+    <input type="file" name="attachment"><br>
+    <?php if($row['attachment']): ?>
+        Current file: <a href="<?php echo $row['attachment']; ?>" target="_blank">View</a><br>
+    <?php endif; ?>
+    <button type="submit" name="submit" class="btn btn-success">Update</button>
+    <button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</button>
+</form>
+=============================================================================
+js/form-validation.js
+
+// Main form validation
+function validateForm() {
+    let firstName = document.getElementById("first_name").value.trim();
+    let lastName = document.getElementById("last_name").value.trim();
+    let email = document.getElementById("email_add").value.trim();
+    let query = document.getElementById("query").value.trim();
+    let terms = document.getElementById("terms").checked;
+    let fileInput = document.getElementById("attachment");
+
+    // Name validation
+    let namePattern = /^[A-Za-z]+$/;
+    if (!namePattern.test(firstName)) {
+        alert("First name must contain letters only.");
+        return false;
+    }
+    if (!namePattern.test(lastName)) {
+        alert("Last name must contain letters only.");
+        return false;
+    }
+
+    // Email validation
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+
+    // Query minimum length
+    if (query.length < 10) {
+        alert("Query must be at least 10 characters.");
+        return false;
+    }
+
+    // Terms validation
+    if (!terms) {
+        alert("You must accept the Terms and Conditions.");
+        return false;
+    }
+
+    // File validation
+    if (fileInput.files.length > 0) {
+        let file = fileInput.files[0];
+        let maxSize = 2 * 1024 * 1024; // 2MB
+        if (file.size > maxSize) {
+            alert("File size must be less than 2MB.");
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+
+
+
