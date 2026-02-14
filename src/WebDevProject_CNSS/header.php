@@ -29,9 +29,9 @@
     
         <div class="navigation">
             <a href="index.php">CNSS Tech</a>
-            <a href="#services">Services</a>
-            <a href="#solutions">Solutions</a>
-            <a href="#about">About</a>
+            <a href="index.php#services">Services</a>
+            <a href="index.php#solutions">Solutions</a>
+            <a href="index.php#about">About</a>
             <a href="contact.php">Contact</a>
         </div>
 

@@ -66,7 +66,7 @@
         </div>
 
         <!-- Contact Form -->
-        <h2 class="contact-title">Contact us</h2>
+        <h2 class="contact-title">Contact Us</h2>
 
         <form class="contact-form" name="form1" method="post" action="process.php"
             onsubmit="return validateForm()" enctype="multipart/form-data">
