@@ -2,63 +2,63 @@
 if (isset($_POST['submit'])) {
     include 'db.php';
 
-    // Server-side validation
-    if (!isset($_POST['terms'])) {
-        die("You must accept the Terms and Conditions.");
-    }
+        if (!isset($_POST['terms'])) {
+            header("Location: form.php");
+            exit;
+        }
 
     $first_name   = trim($_POST['first_name']);
     $last_name    = trim($_POST['last_name']);
     $email_add    = trim($_POST['email_add']);
     $company_name = !empty($_POST['company_name']) ? trim($_POST['company_name']) : NULL;
     $phone_num    = !empty($_POST['phone_num']) ? trim($_POST['phone_num']) : NULL;
-    $query        = trim($_POST['query']);
+    $message      = trim($_POST['query']);
 
-    // File upload handling
-    $attachment = NULL;
-    if (isset($_FILES['attachment']) && $_FILES['attachment']['error'] == 0) {
-        $allowed = ['pdf','doc','docx','png','jpg'];
-        $fileName = $_FILES['attachment']['name'];
-        $fileTmp  = $_FILES['attachment']['tmp_name'];
-        $fileExt  = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+    $sql = "INSERT INTO `userquery`
+    (`first_name`, `last_name`, `email_add`, `company_name`, `phone_num`, `message`)
+    VALUES (?, ?, ?, ?, ?, ?)";
 
-        if (!in_array($fileExt, $allowed)) {
-            die("Invalid file type. Allowed: pdf, doc, docx, png, jpg.");
-        }
-
-        if ($_FILES['attachment']['size'] > 2*1024*1024) {
-            die("File too large. Max 2MB.");
-        }
-
-        if (!is_dir("uploads")) mkdir("uploads", 0777, true);
-        $newName = uniqid() . "_" . basename($fileName);
-        $destination = "uploads/" . $newName;
-
-        if (move_uploaded_file($fileTmp, $destination)) {
-            $attachment = $destination;
-        } else {
-            die("Failed to upload file.");
-        }
+    $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+        die("Prepare failed: " . $conn->error);
     }
 
-    // Insert into database
-    $stmt = $conn->prepare("INSERT INTO userquery 
-        (first_name, last_name, email_add, company_name, phone_num, query, attachment)
-        VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssss", $first_name, $last_name, $email_add, $company_name, $phone_num, $query, $attachment);
+    $stmt->bind_param(
+        "ssssss",
+        $first_name,
+        $last_name,
+        $email_add,
+        $company_name,
+        $phone_num,
+        $message
+    );
 
     if ($stmt->execute()) {
-        // Display a clean "Thank You" page after submission
+
         include 'header.php';
-        echo '<div class="container mt-5">';
-        echo '<h2>Thank You!</h2>';
-        echo '<p>Thank you for reaching out to CNSS Tech. Our team will review your inquiry and respond as soon as possible.</p>';
-        echo '<a href="index.php" class="btn btn-primary">Back to Home</a>';
-        echo '</div>';
+        ?>
+
+        <div style="min-height: calc(90vh - 120px); display: flex; flex-direction: column;">
+            
+            <main style="flex: 1; display: flex; justify-content: center; padding: 4rem 1rem 2rem;">
+                <div style="max-width: 800px; width: 100%;">
+                    <a href="index.php" class="btn-back">Back to Main</a>
+                    
+                    <h1>We’ve Received Your Message!</h1>
+                    <p>Thank you for contacting CNSS Tech.</p>
+                    <p>Our team has received your message and will respond as soon as possible.</p>
+                    <p>We appreciate your interest in our services.</p>
+                </div>
+            </main>
+
+        </div>
+
+        <?php
         include 'footer.php';
-        exit; // stop further execution
+        exit;
+
     } else {
-        echo "<div class='alert alert-danger'>Error: ".$stmt->error."</div>";
+        die("Execute failed: " . $stmt->error);
     }
 
     $stmt->close();

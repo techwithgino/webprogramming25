@@ -155,9 +155,9 @@
             <strong>Phone:</strong> +358 41 740 8331
         </p>
 
-        <div class="btn-container">
-            <a href="form.php" class="btn">Get in touch with us</a>
-        </div>
+        <p class="contact-link">
+            <a href="form.php">Get in touch with us!</a>
+        </p>
 
     </div>
 </section>
