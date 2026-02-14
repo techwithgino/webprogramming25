@@ -215,7 +215,7 @@
     // Must tick checkbox: alert -> OK -> back to form.php, keep inputs
     if (!terms) {
         if (window.cnssSaveDraft) window.cnssSaveDraft();
-        alert("You must accept the Terms and Conditions.");
+        alert("You must confirm that you agree to the Privacy Policy before submitting the form.");
         window.location.href = "form.php";
         return false;
     }

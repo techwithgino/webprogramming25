@@ -33,7 +33,7 @@ function validateForm() {
 
     // Terms validation
     if (!terms) {
-        alert("You must accept the Terms and Conditions.");
+        alert("You must confirm that you agree to the Privacy Policy before submitting the form.");
         return false;
     }
 
