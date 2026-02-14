@@ -35,135 +35,184 @@ form.php
 
 <?php include 'header.php'; ?>
 
-<div class="container mt-5">
-    <h2>Submit Your Query</h2>
+<div class="contact-page">
+  <div class="contact-wrap">
 
-    <form name="form1" method="post" action="process.php" 
+    <!-- Offices Information -->
+    <div class="offices-block">
+      <div class="offices-grid">
+        <div class="office-card">
+          <h4>CNSS Tech Headquarters</h4>
+          <p>
+            Keilaranta 1,<br>
+            02150 Espoo,<br>
+            Finland
+          </p>
+          <p>+358 6 781 2121</p>
+          <p>info(at)cnsstech.com</p>
+        </div>
+
+        <div class="office-card">
+          <h4>CNSS Tech Turku</h4>
+          <p>
+            Yliopistonkatu 24 A2-4,<br>
+            20100 Turku,<br>
+            Finland
+          </p>
+          <p>+358 6 781 2121</p>
+          <p>info(at)cnsstech.com</p>
+        </div>
+
+        <div class="office-card">
+          <h4>CNSS Tech Stockholm</h4>
+          <p>
+            Drottninggatan 71D,<br>
+            111 36 Stockholm,<br>
+            Sweden
+          </p>
+          <p>+46 (0)70 300 12 40</p>
+          <p>info(at)cnsstech.com</p>
+        </div>
+
+        <div class="office-card">
+          <h4>CNSS Tech Gothenburg</h4>
+          <p>
+            Östra Hamngatan 17,<br>
+            411 10 Gothenburg,<br>
+            Sweden
+          </p>
+          <p>+46 (0)70 300 12 40</p>
+          <p>info(at)cnsstech.com</p>
+        </div>
+
+        <div class="office-card">
+          <h4>CNSS Tech Norway</h4>
+          <p>
+            Fridtjof Nansens Plass 5,<br>
+            0160 Oslo,<br>
+            Norway
+          </p>
+          <p>+47 23 96 07 63</p>
+          <p>info(at)cnsstech.com</p>
+        </div>
+
+        <div class="office-card">
+          <h4>CNSS Tech Denmark</h4>
+          <p>
+            Tromsøgade 2,<br>
+            DK-2100 Copenhagen Ø,<br>
+            Denmark
+          </p>
+          <p>+45 31 18 26 27</p>
+          <p>info(at)cnsstech.com</p>
+        </div>
+
+        <div class="office-card">
+          <h4>CNSS Tech Germany</h4>
+          <p>
+            Rosenheimerstr. 141h,<br>
+            81671 Munich,<br>
+            Germany
+          </p>
+          <p>+49 89 200 057 057</p>
+          <p>info(at)cnsstech.com</p>
+        </div>
+
+        <div class="office-card">
+          <h4>CNSS Tech UK</h4>
+          <p>
+            The Bower, 207-211 Old St,<br>
+            EC1V 9NR London,<br>
+            United Kingdom
+          </p>
+          <p>info(at)cnsstech.com</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <h2 class="contact-title">Contact us</h2>
+
+    <form class="contact-form" name="form1" method="post" action="process.php"
           onsubmit="return validateForm()" enctype="multipart/form-data">
 
-        <!-- First & Last Name -->
-        <div class="form-group">
-            <div class="row">
-                <div class="col">
-                    <label for="first_name">First Name:</label>
-                    <input type="text" class="form-control" id="first_name" name="first_name"
-                           onkeyup="checkName()" placeholder="Enter first name" required>
-                </div>
-                <div class="col">
-                    <label for="last_name">Last Name:</label>
-                    <input type="text" class="form-control" id="last_name" name="last_name"
-                           placeholder="Enter last name" required>
-                </div>
-            </div>
+      <div class="form-grid">
+        <!-- LEFT COLUMN -->
+        <div class="form-col">
+          <div class="field">
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" name="first_name" class="flat-input" required>
+          </div>
+
+          <div class="field">
+            <label for="phone_num">Phone number</label>
+            <input type="text" id="phone_num" name="phone_num" class="flat-input">
+          </div>
+
+          <div class="field">
+            <label for="company_name">Company</label>
+            <input type="text" id="company_name" name="company_name" class="flat-input">
+          </div>
         </div>
 
-        <!-- Email -->
-        <div class="form-group">
-            <label for="email_add">Email Address:</label>
-            <input type="email" class="form-control" id="email_add" name="email_add"
-                   onblur="checkEmail()" placeholder="Enter email address" required>
+        <!-- RIGHT COLUMN -->
+        <div class="form-col">
+          <div class="field">
+            <label for="last_name">Last Name</label>
+            <input type="text" id="last_name" name="last_name" class="flat-input" required>
+          </div>
+
+          <div class="field">
+            <label for="email_add">Email <span class="req">*</span></label>
+            <input type="email" id="email_add" name="email_add" class="flat-input" required>
+          </div>
+
+          <div class="field">
+            <label for="query">Message <span class="req">*</span></label>
+            <textarea id="query" name="query" class="flat-textarea" rows="8" maxlength="500" required></textarea>
+          </div>
         </div>
+      </div>
 
-        <!-- Company Name -->
-        <div class="form-group">
-            <label for="company_name">Company Name (Optional):</label>
-            <input type="text" class="form-control" id="company_name" name="company_name"
-                   placeholder="Enter company name">
-        </div>
+      <div class="consent-row">
+        <label class="checkbox-line">
+          <!-- keep required if you want same behavior as current -->
+          <input type="checkbox" id="terms" name="terms" required>
+          <span>
+            Yes, I would like to receive marketing communications regarding CNSS Tech news, services, and events.
+          </span>
+        </label>
+      </div>
 
-        <!-- Phone Number -->
-        <div class="form-group">
-            <label for="phone_num">Phone Number (Optional):</label>
-            <input type="text" class="form-control" id="phone_num" name="phone_num"
-                   placeholder="Enter phone number">
-        </div>
+      <div class="actions-row">
+        <button type="submit" class="btn-pill" name="submit">Submit</button>
+      </div>
 
-        <!-- Query -->
-        <div class="form-group">
-            <label for="query">Your Query:</label>
-            <textarea class="form-control" id="query" name="query" rows="5" maxlength="500"
-                      placeholder="Type your query here (min 10 characters)" required></textarea>
-        </div>
-
-        <!-- File Upload -->
-        <div class="form-group">
-            <label for="attachment">Attach a file (Optional, max 2MB):</label>
-            <input type="file" class="form-control" id="attachment" name="attachment" 
-                   accept=".pdf,.doc,.docx,.png,.jpg">
-        </div>
-
-        <!-- Terms & Conditions -->
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="terms" name="terms"
-                   onclick="termsClicked()" required>
-            <label class="form-check-label" for="terms">
-                I agree to the <a href="terms.php" target="_blank">Terms and Conditions</a>
-            </label>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-
+      <p class="fineprint">
+        By submitting this form, you confirm that you agree to the storing and processing of your personal data by CNSS Tech.
+        <a href="privacy-policy.php">Privacy Policy</a>.
+      </p>
     </form>
+
+  </div>
 </div>
 
-<!-- JS Validation -->
 <script>
-// Main form validation
+// JS validation (kept from your file)
 function validateForm() {
-    let firstName = document.getElementById("first_name").value.trim();
-    let lastName  = document.getElementById("last_name").value.trim();
-    let email     = document.getElementById("email_add").value.trim();
-    let query     = document.getElementById("query").value.trim();
-    let terms     = document.getElementById("terms").checked;
-    let fileInput = document.getElementById("attachment");
+  let firstName = document.getElementById("first_name").value.trim();
+  let lastName  = document.getElementById("last_name").value.trim();
+  let email     = document.getElementById("email_add").value.trim();
+  let query     = document.getElementById("query").value.trim();
+  let terms     = document.getElementById("terms").checked;
 
-    // Name validation (letters only)
-    let namePattern = /^[A-Za-z]+$/;
-    if (!namePattern.test(firstName)) { alert("First name must contain letters only."); return false; }
-    if (!namePattern.test(lastName))  { alert("Last name must contain letters only."); return false; }
+  if (!/^[A-Za-z]+$/.test(firstName)) { alert("First name must contain letters only."); return false; }
+  if (!/^[A-Za-z]+$/.test(lastName))  { alert("Last name must contain letters only."); return false; }
+  if (!/^[^ ]+@[^ ]+\.[a-z]{2,3}$/.test(email)) { alert("Please enter a valid email."); return false; }
+  if (query.length < 10) { alert("Message must be at least 10 characters."); return false; }
+  if (!terms) { alert("You must accept the Terms and Conditions."); return false; }
 
-    // Email validation
-    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-    if (!emailPattern.test(email)) { alert("Please enter a valid email address."); return false; }
-
-    // Query length
-    if (query.length < 10) { alert("Query must be at least 10 characters."); return false; }
-
-    // Terms checkbox
-    if (!terms) { alert("You must accept the Terms and Conditions."); return false; }
-
-    // File validation
-    if (fileInput.files.length > 0) {
-        let file = fileInput.files[0];
-        let allowedExtensions = ['pdf','doc','docx','png','jpg'];
-        let fileExt = file.name.split('.').pop().toLowerCase();
-        if (!allowedExtensions.includes(fileExt)) { alert("Invalid file type."); return false; }
-        if (file.size > 2*1024*1024) { alert("File too large. Max 2MB."); return false; }
-    }
-
-    return true;
-}
-
-// onkeyup event
-function checkName() {
-    let firstName = document.getElementById("first_name");
-    let lastName  = document.getElementById("last_name");
-    let pattern = /^[A-Za-z]*$/;
-
-    firstName.style.border = pattern.test(firstName.value) ? "2px solid green" : "2px solid red";
-    lastName.style.border  = pattern.test(lastName.value)  ? "2px solid green" : "2px solid red";
-}
-
-// onblur event
-function checkEmail() {
-    let email = document.getElementById("email_add").value;
-    if (email === "") alert("Email cannot be empty.");
-}
-
-// onclick event
-function termsClicked() {
-    console.log("Terms checkbox clicked.");
+  return true;
 }
 </script>
 
@@ -178,7 +227,6 @@ process.php
 if (isset($_POST['submit'])) {
     include 'db.php';
 
-    // Server-side validation
     if (!isset($_POST['terms'])) {
         die("You must accept the Terms and Conditions.");
     }
@@ -217,14 +265,27 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    // Insert into database
-    $stmt = $conn->prepare("INSERT INTO userquery 
-        (first_name, last_name, email_add, company_name, phone_num, query, attachment)
-        VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssss", $first_name, $last_name, $email_add, $company_name, $phone_num, $query, $attachment);
+    // Insert into database (note the backticks)
+    $sql = "INSERT INTO userquery
+        (`first_name`, `last_name`, `email_add`, `company_name`, `phone_num`, `query`, `attachment`)
+        VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+    $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+        die("Prepare failed: " . $conn->error);
+    }
+
+    $stmt->bind_param("sssssss",
+        $first_name,
+        $last_name,
+        $email_add,
+        $company_name,
+        $phone_num,
+        $query,
+        $attachment
+    );
 
     if ($stmt->execute()) {
-        // Display a clean "Thank You" page after submission
         include 'header.php';
         echo '<div class="container mt-5">';
         echo '<h2>Thank You!</h2>';
@@ -232,9 +293,9 @@ if (isset($_POST['submit'])) {
         echo '<a href="index.php" class="btn btn-primary">Back to Home</a>';
         echo '</div>';
         include 'footer.php';
-        exit; // stop further execution
+        exit;
     } else {
-        echo "<div class='alert alert-danger'>Error: ".$stmt->error."</div>";
+        die("Execute failed: " . $stmt->error);
     }
 
     $stmt->close();
@@ -432,6 +493,18 @@ function validateForm() {
 
     return true;
 }
+
+
+
+
+
+        <p class="fineprint">
+            By submitting this form, you confirm that you agree to the storing and processing of your personal data by CNSS Tech.
+            <a href="privacy-policy.php">Privacy Policy</a>.
+        </p>
+
+
+
 
 
 

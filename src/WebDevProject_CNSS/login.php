@@ -49,7 +49,7 @@
             </form>
 
             <p class="login-help">
-                Having trouble signing in? <a href="form.php">Contact Us</a>
+                Having trouble signing in? <a href="contact.php">Contact Us</a>
             </p>
 
             <p class="login-help">

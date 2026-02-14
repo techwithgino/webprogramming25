@@ -216,7 +216,7 @@
     if (!terms) {
         if (window.cnssSaveDraft) window.cnssSaveDraft();
         alert("You must confirm that you agree to the Privacy Policy before submitting the form.");
-        window.location.href = "form.php";
+        window.location.href = "contact.php";
         return false;
     }
 

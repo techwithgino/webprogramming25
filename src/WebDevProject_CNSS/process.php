@@ -3,7 +3,7 @@ if (isset($_POST['submit'])) {
     include 'db.php';
 
         if (!isset($_POST['terms'])) {
-            header("Location: form.php");
+            header("Location: contact.php");
             exit;
         }
 

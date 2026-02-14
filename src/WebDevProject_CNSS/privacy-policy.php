@@ -1,7 +1,7 @@
 <?php include 'header.php'; ?>
 
 <div class="container" style="padding: 3rem 1.5rem; max-width: 900px;">
-    <a href="form.php" class="btn-back">Back to Contact Us</a>
+    <a href="contact.php" class="btn-back">Back to Contact Us</a>
     <h2>Privacy Policy</h2>
     <p><strong>Last updated:</strong> February 14, 2026</p>
 
