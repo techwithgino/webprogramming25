@@ -44,9 +44,9 @@ include 'header_portal.php';
 
                 <select id="search_type" name="type" required>
                     <option value="">Select Type</option>
-                    <option value="case">Case Number</option>
-                    <option value="request">Request Number</option>
-                    <option value="inquiry">Inquiry Number</option>
+                    <option value="case">Case Ticket</option>
+                    <option value="request">Request Ticket</option>
+                    <option value="inquiry">Inquiry Ticket</option>
                 </select>
 
                 <input type="text" name="q" placeholder="Enter Ticket Number" required>
