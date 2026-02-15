@@ -14,38 +14,51 @@ Get in touch with CNSS Tech today.
 
 <h2>Or We Contact You!</h2>
 
-<form class="contact-form" action="#" method="post">
-        <div class="form-group">
-            <label for="fname">First Name</label>
-            <input type="text" id="name" name="name" required>
-        </div>
+        <form id="contactForm" class="contact-form" action="contact_submit.php" method="post" enctype="multipart/form-data">
 
-        <div class="form-group">
-            <label for="lname">Last Name</label>
-            <input type="text" id="name" name="name" required>
-        </div>
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input type="text" id="first_name" name="first_name" required>
+            </div>
 
-        <div class="form-group">
-            <label for="coname">Company Name</label>
-            <input type="text" id="name" name="name">
-        </div>
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input type="text" id="last_name" name="last_name" required>
+            </div>
 
-        <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required>
-        </div>
+            <div class="form-group">
+                <label for="company_name">Company Name</label>
+                <input type="text" id="company_name" name="company_name">
+            </div>
 
-        <div class="form-group">
-            <label for="number">Phone Number</label>
-            <input type="number" id="number" name="name">
-        </div>
+            <div class="form-group">
+                <label for="email_add">Email Address</label>
+                <input type="email" id="email_add" name="email_add" required>
+            </div>
 
-        <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-        </div>
+            <div class="form-group">
+                <label for="phone_num">Phone Number</label>
+                <input type="text" id="phone_num" name="phone_num">
+            </div>
 
-        <button type="submit" class="btn">Send Message</button>
+            <div class="form-group">
+                <label for="query">Message</label>
+                <textarea id="query" name="query" rows="5" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="attachment">Attachment (optional, max 2MB)</label>
+                <input type="file" id="attachment" name="attachment">
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="terms" name="terms" value="1" required>
+                    I agree to the Privacy Policy
+                </label>
+            </div>
+
+            <button type="submit" class="btn">Send Message</button>
         </form>
     </div>
 </section>

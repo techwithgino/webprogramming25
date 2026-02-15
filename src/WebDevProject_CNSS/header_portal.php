@@ -3,13 +3,18 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CNSS Tech Case Management Portal</title>
+
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Global JavaScript (Form Validation + Portal Features) -->
+    <script defer src="js/form-validation.js"></script>
 </head>
 <body>
 
@@ -20,14 +25,17 @@ if (session_status() === PHP_SESSION_NONE) {
             <img src="images/10_img_logo.PNG" alt="CNSS Logo" class="logo-blend">
             <div class="brand-text">
                 <span class="brand-name">CNSS Tech</span>
-                <span class="brand-tagline">Driving Business Forward with Technology</span>
+                <span class="brand-tagline">
+                    Driving Business Forward with Technology
+                </span>
             </div>
         </div>
 
         <div class="portal-user">
             <?php if (isset($_SESSION["username"])): ?>
                 <span class="portal-username">
-                    Logged in as: <?php echo htmlspecialchars($_SESSION["username"]); ?>
+                    Logged in as:
+                    <?php echo htmlspecialchars($_SESSION["username"]); ?>
                 </span>
             <?php endif; ?>
         </div>

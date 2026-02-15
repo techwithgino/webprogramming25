@@ -10,7 +10,7 @@
         ongoing cases, update information, and communicate directly with our technical support team.
         </p>
 
-        <form action="create_acc_submit.php" method="post" class="contact-form">
+        <form id="createAccountForm" action="create_acc_submit.php" method="post" class="contact-form">
 
         <div class="form-grid">
 
