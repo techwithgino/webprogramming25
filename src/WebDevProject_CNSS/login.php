@@ -8,44 +8,66 @@ function h($v) {
 
 $error = "";
 
+// CSRF token
+if (empty($_SESSION["csrf_token"])) {
+    $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $company_id = trim($_POST["company_id"] ?? "");
-    $username   = trim($_POST["username"] ?? "");
-    $password   = (string)($_POST["password"] ?? "");
-
-    if ($company_id === "" || $username === "" || $password === "") {
-        $error = "All fields are required.";
+    // CSRF check
+    $csrf = $_POST["csrf_token"] ?? "";
+    if (!hash_equals($_SESSION["csrf_token"], $csrf)) {
+        $error = "Security check failed. Please refresh and try again.";
     } else {
 
-        $stmt = $conn->prepare("
-            SELECT sn, company_id, user_name, pswd
-            FROM acc_creation
-            WHERE company_id = ? AND user_name = ?
-            LIMIT 1
-        ");
+        $company_id = trim($_POST["company_id"] ?? "");
+        $username   = trim($_POST["username"] ?? "");
+        $password   = (string)($_POST["password"] ?? "");
 
-        if (!$stmt) {
-            die("Prepare failed: " . $conn->error);
-        }
-
-        $stmt->bind_param("ss", $company_id, $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $user = $result->fetch_assoc();
-
-        if ($user && password_verify($password, $user["pswd"])) {
-
-            $_SESSION["logged_in"]  = true;
-            $_SESSION["username"]   = $user["user_name"];
-            $_SESSION["company_id"] = $user["company_id"];
-            $_SESSION["sn"]         = $user["sn"];
-
-            header("Location: CaseMgmtPortal.php");
-            exit();
-
+        if ($company_id === "" || $username === "" || $password === "") {
+            $error = "All fields are required.";
         } else {
-            $error = "Invalid Company ID, Username, or Password.";
+
+            // NOTE: add first_name, last_name (adjust column names if needed)
+            $stmt = $conn->prepare("
+                SELECT sn, company_id, user_name, pswd, first_name, last_name
+                FROM acc_creation
+                WHERE company_id = ? AND user_name = ?
+                LIMIT 1
+            ");
+
+            if (!$stmt) {
+                die("Prepare failed: " . $conn->error);
+            }
+
+            $stmt->bind_param("ss", $company_id, $username);
+            $stmt->execute();
+
+            // If your server doesn't support get_result(), tell me and I’ll provide bind_result() version.
+            $result = $stmt->get_result();
+            $user = $result->fetch_assoc();
+
+            if ($user && password_verify($password, $user["pswd"])) {
+
+                // Prevent session fixation
+                session_regenerate_id(true);
+
+                $_SESSION["logged_in"]  = true;
+                $_SESSION["username"]   = $user["user_name"];
+                $_SESSION["company_id"] = $user["company_id"];
+                $_SESSION["sn"]         = (int)$user["sn"];
+
+                // Store for "Comment by First Last"
+                $_SESSION["first_name"] = $user["first_name"] ?? "";
+                $_SESSION["last_name"]  = $user["last_name"] ?? "";
+
+                header("Location: CaseMgmtPortal.php");
+                exit();
+
+            } else {
+                $error = "Invalid Company ID, Username, or Password.";
+            }
         }
     }
 }
@@ -88,15 +110,29 @@ include 'header.php';
                 </div>
             <?php endif; ?>
 
-            <form method="POST" class="login-form">
+            <form method="POST" class="login-form" autocomplete="off">
+                <input type="hidden" name="csrf_token" value="<?php echo h($_SESSION["csrf_token"]); ?>">
+
                 <div class="login-field">
                     <label for="company_id">Company ID</label>
-                    <input type="text" name="company_id" id="company_id" required>
+                    <input
+                        type="text"
+                        name="company_id"
+                        id="company_id"
+                        required
+                        value="<?php echo h($_POST['company_id'] ?? ''); ?>"
+                    >
                 </div>
 
                 <div class="login-field">
                     <label for="username">Username</label>
-                    <input type="text" name="username" id="username" required>
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        required
+                        value="<?php echo h($_POST['username'] ?? ''); ?>"
+                    >
                 </div>
 
                 <div class="login-field">
