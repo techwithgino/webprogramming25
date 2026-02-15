@@ -301,7 +301,7 @@
     .field label {
     display: block;
     font-size: 0.82rem;
-    color: #9ca3af;
+    color: #003135;
     margin: 0 0 0.55rem 0;
     letter-spacing: 0.02em;
     }
@@ -620,3 +620,199 @@
             text-align: center;
         }
     }
+
+    /* ============================= */
+    /* CaseMgmtPortal ONLY styles    */
+    /* ============================= */
+
+    /* Create real spacing between strips */
+    #portal-actions {
+        padding-top: 1.25rem; /* gives breathing room at top of portal page */
+    }
+
+    /* SEARCH STRIP (one-line rectangle) */
+    .search-strip {
+        background: #f8fafc;
+        padding: 1rem 1.25rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        margin-bottom: 2rem; /* ✅ visible gap below search */
+    }
+
+    .search-form {
+        display: grid;
+        grid-template-columns: auto 220px 1fr auto;
+        gap: 1rem;
+        align-items: center;
+        width: 100%;
+    }
+
+    .search-group {
+        display: contents; /* allows label + select to fit into grid cleanly */
+    }
+
+    .search-form label {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #003135;
+        white-space: nowrap;
+    }
+
+    .search-form select,
+    .search-form input {
+        border: none;
+        outline: none;
+        background: #f3f4f6;
+        border-radius: 8px;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.95rem;
+        color: #111827;
+        box-sizing: border-box;
+    }
+
+    .search-form button {
+        border: none;
+        cursor: pointer;
+        background: #00887A;
+        color: #ffffff;
+        font-weight: 700;
+        padding: 0.65rem 1.6rem;
+        border-radius: 9999px;
+    }
+
+    .search-form button:hover {
+        background: #024950;
+    }
+
+    /* ACTION STRIPS */
+    .action-strip {
+        background: #f8fafc;
+        padding: 1rem 1.25rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        margin-bottom: 2rem; /* ✅ gap between each form */
+    }
+
+    /* Make the form stretch the full width */
+    .action-form-vertical {
+        width: 100%;
+        display: grid;
+        grid-template-rows: auto auto auto;
+        gap: 1rem;
+    }
+
+    /* Top row aligned perfectly with textarea width using GRID */
+    .action-row {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 160px 1fr 1fr 1fr; /* label + 3 equal fields */
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .action-row strong {
+        font-size: 0.95rem;
+        color: #003135;
+        white-space: nowrap;
+    }
+
+    /* Inputs in the row */
+    .action-row input {
+        border: none;
+        outline: none;
+        background: #f3f4f6;
+        border-radius: 8px;
+        padding: 0.6rem 0.9rem;
+        font-size: 0.95rem;
+        color: #111827;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    /* Message box matches the exact strip width */
+    .action-form-vertical textarea {
+        width: 100%;
+        min-height: 140px;
+        resize: vertical;
+        border: none;
+        outline: none;
+        background: #f3f4f6;
+        border-radius: 10px;
+        padding: 1rem;
+        font-size: 0.95rem;
+        color: #111827;
+        box-sizing: border-box;
+    }
+
+    /* Counter (left) + Button (right) BELOW textarea */
+    .action-bottom {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .char-count {
+        font-size: 0.85rem;
+        color: #6b7280;
+    }
+
+    /* Right-aligned submit/send button */
+    .action-btn {
+        border: none;
+        cursor: pointer;
+        background: #00887A;
+        color: #ffffff;
+        font-weight: 700;
+        padding: 0.7rem 1.8rem;
+        border-radius: 9999px;
+    }
+
+    .action-btn:hover {
+        background: #024950;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+        .search-form {
+            grid-template-columns: 1fr;
+        }
+
+        .action-row {
+            grid-template-columns: 1fr; /* stack label + inputs */
+        }
+
+        .action-bottom {
+            flex-direction: column;
+            align-items: flex-end; /* button right */
+        }
+
+        .char-count {
+            width: 100%;
+            text-align: right;
+        }
+    }
+
+        /* Bottom Sign Out Link */
+    .portal-signout {
+        text-align: center;
+        margin: 2.5rem 0 1.5rem;
+    }
+
+    .portal-signout a {
+        font-size: 0.95rem;
+        color: #003135;
+        text-decoration: underline;
+        font-weight: 500;
+        transition: opacity 0.2s ease;
+    }
+
+    .portal-signout a:hover {
+        opacity: 0.6;
+    }
+
+    .portal-hero {
+    background: url("../images/11_img.jpg") center/cover no-repeat;
+}
+
