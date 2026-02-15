@@ -25,7 +25,7 @@ include 'header_portal.php';
 <section class="hero portal-hero">
     <div class="container hero-flex">
         <div class="hero-text">
-            <h2>CNSS Tech Case Management Portal</h2>
+            <h2>CNSS Tech Ticket Management Portal</h2>
             <p>
                 Welcome! Choose an option below to report a case, submit a request, ask an inquiry,
                 or search by Case Number, Request Number or Inquiry Number.
