@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'db.php';
 
 function h($v) {
     return htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8');
@@ -7,34 +8,45 @@ function h($v) {
 
 $error = "";
 
-// Demo credentials (Replace with database authentication later)
-$valid_company  = "CNSS001";
-$valid_username = "admin";
-$valid_password = "CNSS123";
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $company_id = trim($_POST["company_id"] ?? "");
     $username   = trim($_POST["username"] ?? "");
-    $password   = trim($_POST["password"] ?? "");
+    $password   = (string)($_POST["password"] ?? "");
 
     if ($company_id === "" || $username === "" || $password === "") {
         $error = "All fields are required.";
-    }
-    elseif (
-        $company_id === $valid_company &&
-        $username === $valid_username &&
-        $password === $valid_password
-    ) {
-        $_SESSION["logged_in"]  = true;
-        $_SESSION["username"]   = $username;
-        $_SESSION["company_id"] = $company_id;
-
-        // ✅ Redirect BEFORE any output
-        header("Location: CaseMgmtPortal.php");
-        exit();
     } else {
-        $error = "Invalid Company ID, Username, or Password.";
+
+        $stmt = $conn->prepare("
+            SELECT sn, company_id, user_name, pswd
+            FROM acc_creation
+            WHERE company_id = ? AND user_name = ?
+            LIMIT 1
+        ");
+
+        if (!$stmt) {
+            die("Prepare failed: " . $conn->error);
+        }
+
+        $stmt->bind_param("ss", $company_id, $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+
+        if ($user && password_verify($password, $user["pswd"])) {
+
+            $_SESSION["logged_in"]  = true;
+            $_SESSION["username"]   = $user["user_name"];
+            $_SESSION["company_id"] = $user["company_id"];
+            $_SESSION["sn"]         = $user["sn"];
+
+            header("Location: CaseMgmtPortal.php");
+            exit();
+
+        } else {
+            $error = "Invalid Company ID, Username, or Password.";
+        }
     }
 }
 

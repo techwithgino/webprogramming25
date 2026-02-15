@@ -9,6 +9,18 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
 include 'header_portal.php';
 ?>
 
+<?php if (isset($_GET["error"])): ?>
+    <div style="color:#e11d48; font-weight:600; margin: 1rem 0;">
+        <?php
+        $e = $_GET["error"];
+        if ($e === "not_found") echo "Ticket not found (or you don’t have access).";
+        elseif ($e === "bad_search") echo "Please choose a type and enter a ticket number.";
+        else echo "Something went wrong.";
+        ?>
+    </div>
+    
+<?php endif; ?>
+
 <!-- HERO (with portal background class + sign out icon) -->
 <section class="hero portal-hero">
     <div class="container hero-flex">
@@ -48,74 +60,68 @@ include 'header_portal.php';
 
         <!-- REPORT A CASE -->
         <div class="action-strip">
-        <form action="report_case_submit.php" method="post" class="action-form-vertical">
+            <form action="portal_submit.php" method="post" class="action-form-vertical">
+            <input type="hidden" name="entry_type" value="case">
 
             <div class="action-row">
-            <strong>Report a Case:</strong>
-            <input type="text" name="case_name" placeholder="Full Name" required>
-            <input type="email" name="case_email" placeholder="Email" required>
-            <input type="text" name="case_subject" placeholder="Case Subject" required>
+                <strong>Report a Case:</strong>
+                <input type="text" name="subject" placeholder="Case Subject" required>
             </div>
 
-            <textarea name="case_details"
-                    placeholder="Describe your issue in detail (max 5000 characters)..."
-                    maxlength="5000"
-                    required></textarea>
+            <textarea name="message"
+                placeholder="Describe your issue in detail (max 5000 characters)..."
+                maxlength="5000"
+                required></textarea>
 
             <div class="action-bottom">
-            <div class="char-count"><span>0</span> / 5000 characters</div>
-            <button type="submit" class="action-btn">Submit</button>
+                <div class="char-count"><span>0</span> / 5000 characters</div>
+                <button type="submit" class="action-btn">Submit</button>
             </div>
-
-        </form>
+            </form>
         </div>
 
         <!-- SUBMIT A REQUEST -->
         <div class="action-strip">
-        <form action="request_submit.php" method="post" class="action-form-vertical">
+            <form action="portal_submit.php" method="post" class="action-form-vertical">
+            <input type="hidden" name="entry_type" value="request">
 
             <div class="action-row">
-            <strong>Submit a Request:</strong>
-            <input type="text" name="req_name" placeholder="Full Name" required>
-            <input type="email" name="req_email" placeholder="Email" required>
-            <input type="text" name="req_type" placeholder="Request Subject" required>
+                <strong>Submit a Request:</strong>
+                <input type="text" name="subject" placeholder="Request Subject" required>
             </div>
 
-            <textarea name="req_details"
-                    placeholder="Provide additional details (max 5000 characters)..."
-                    maxlength="5000"
-                    required></textarea>
+            <textarea name="message"
+                placeholder="Provide additional details (max 5000 characters)..."
+                maxlength="5000"
+                required></textarea>
 
             <div class="action-bottom">
-            <div class="char-count"><span>0</span> / 5000 characters</div>
-            <button type="submit" class="action-btn">Submit</button>
+                <div class="char-count"><span>0</span> / 5000 characters</div>
+                <button type="submit" class="action-btn">Submit</button>
             </div>
-
-        </form>
+            </form>
         </div>
 
         <!-- ASK AN INQUIRY -->
         <div class="action-strip">
-        <form action="inquiry_submit.php" method="post" class="action-form-vertical">
+            <form action="portal_submit.php" method="post" class="action-form-vertical">
+            <input type="hidden" name="entry_type" value="inquiry">
 
             <div class="action-row">
-            <strong>Ask an Inquiry:</strong>
-            <input type="text" name="inq_name" placeholder="Full Name" required>
-            <input type="email" name="inq_email" placeholder="Email" required>
-            <input type="text" name="inq_topic" placeholder="Inquiry Subject" required>
+                <strong>Ask an Inquiry:</strong>
+                <input type="text" name="subject" placeholder="Inquiry Subject" required>
             </div>
 
-            <textarea name="inq_message"
-                    placeholder="Enter your message (max 5000 characters)..."
-                    maxlength="5000"
-                    required></textarea>
+            <textarea name="message"
+                placeholder="Enter your message (max 5000 characters)..."
+                maxlength="5000"
+                required></textarea>
 
             <div class="action-bottom">
-            <div class="char-count"><span>0</span> / 5000 characters</div>
-            <button type="submit" class="action-btn">Submit</button>
+                <div class="char-count"><span>0</span> / 5000 characters</div>
+                <button type="submit" class="action-btn">Submit</button>
             </div>
-
-        </form>
+            </form>
         </div>
 
     </div>

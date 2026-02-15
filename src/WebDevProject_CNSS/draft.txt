@@ -504,6 +504,197 @@ function validateForm() {
         </p>
 
 
+0000000000000000000000000000000000000000000000000000000000000000000000000000000
+Account Creation table
+
+
+db.php
+=================================
+<?php
+$servername = "db"; // Replace with your MySQL server hostname
+$username = "admin";     // Replace with your MySQL username
+$password = "Password123";     // Replace with your MySQL password
+$dbname = "cnsstech_db";       // Replace with the name of your MySQL database
+
+// Create a database connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
+00000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Table
+CREATE TABLE acc_creation (
+    sn INT AUTO_INCREMENT PRIMARY KEY,
+    company_id VARCHAR(50) NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    company_email VARCHAR(50) NOT NULL,
+    user_name VARCHAR(50) NOT NULL,
+    pswd VARCHAR(50) NOT NULL,
+    conf_pswd VARCHAR(50) NOT NULL
+);
+
+
+
+00000000000000000000000000000000000000000000000000000000000000000000000000000000
+Table
+CREATE TABLE case_mgmt_portal (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  acc_sn INT NOT NULL,
+  company_id VARCHAR(50) NOT NULL,
+  entry_type ENUM('case','request','inquiry') NOT NULL,
+  full_name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  subject VARCHAR(150) NOT NULL,
+  message TEXT NOT NULL,
+  ticket_no VARCHAR(30) NOT NULL UNIQUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_case_acc
+    FOREIGN KEY (acc_sn) REFERENCES acc_creation(sn)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE INDEX idx_case_company ON case_mgmt_portal(company_id);
+CREATE INDEX idx_case_accsn ON case_mgmt_portal(acc_sn);
+
+00000000000000000000000000000000000000000000000000000000000000000000000000000000
+ticket_success.php
+
+<?php
+session_start();
+
+if (!isset($_SESSION["last_ticket"])) {
+    header("Location: CaseMgmtPortal.php");
+    exit();
+}
+
+$ticket = $_SESSION["last_ticket"];
+unset($_SESSION["last_ticket"]); // one-time display
+
+include 'header_portal.php';
+?>
+
+<div class="container" style="max-width: 820px; margin: 3rem auto;">
+  <h2>Thank you! We will get back to you as soon as possible.</h2>
+  <p style="margin-top: 1rem; font-size: 1.1rem;">
+    Here is your Ticket number <strong><?php echo htmlspecialchars($ticket); ?></strong>
+  </p>
+
+  <p style="margin-top: 2rem;">
+    <a href="CaseMgmtPortal.php">Back to Portal</a>
+  </p>
+</div>
+
+<?php include 'footer.php'; ?>
+
+00000000000000000000000000000000000000000000000000000000000000000000000000000000
+portal_submit.php
+
+<?php
+session_start();
+include 'db.php';
+
+// Must be logged in
+if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
+    header("Location: login.php");
+    exit();
+}
+
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    header("Location: CaseMgmtPortal.php");
+    exit();
+}
+
+$acc_sn    = (int)($_SESSION["sn"] ?? 0);
+$company_id = trim($_SESSION["company_id"] ?? "");
+
+$type    = trim($_POST["entry_type"] ?? "");
+$name    = trim($_POST["full_name"] ?? "");
+$email   = trim($_POST["email"] ?? "");
+$subject = trim($_POST["subject"] ?? "");
+$message = trim($_POST["message"] ?? "");
+
+// Basic validation
+$allowed = ['case','request','inquiry'];
+if ($acc_sn <= 0 || $company_id === "" || !in_array($type, $allowed, true)) {
+    header("Location: CaseMgmtPortal.php?error=bad_session");
+    exit();
+}
+
+if ($name === "" || $email === "" || $subject === "" || $message === "") {
+    header("Location: CaseMgmtPortal.php?error=missing");
+    exit();
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    header("Location: CaseMgmtPortal.php?error=bad_email");
+    exit();
+}
+
+// Generate a numeric-looking ticket (unique)
+function generate_ticket(): string {
+    // Example: 20260215 + 6 random digits => 14-16 digits total
+    $date = date("Ymd");
+    $rand = random_int(100000, 999999);
+    return $date . $rand;
+}
+
+// try insert; if ticket collision happens (very rare), retry a few times
+$attempts = 0;
+do {
+    $attempts++;
+    $ticket = generate_ticket();
+
+    $stmt = $conn->prepare("
+        INSERT INTO case_mgmt_portal
+        (acc_sn, company_id, entry_type, full_name, email, subject, message, ticket_no)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    ");
+
+    if (!$stmt) {
+        die("Prepare failed: " . $conn->error);
+    }
+
+    $stmt->bind_param(
+        "isssssss",
+        $acc_sn,
+        $company_id,
+        $type,
+        $name,
+        $email,
+        $subject,
+        $message,
+        $ticket
+    );
+
+    $ok = $stmt->execute();
+
+    // If duplicate ticket_no, MySQL error 1062
+    if (!$ok && $conn->errno == 1062 && $attempts < 5) {
+        $ok = false;
+        continue;
+    }
+
+    if (!$ok) {
+        die("Insert failed: " . $stmt->error);
+    }
+
+    break;
+
+} while ($attempts < 5);
+
+// store ticket in session for thank you page
+$_SESSION["last_ticket"] = $ticket;
+
+header("Location: ticket_success.php");
+exit();
+00000000000000000000000000000000000000000000000000000000000000000000000000000000
+
 
 
 
