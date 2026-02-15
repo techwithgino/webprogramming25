@@ -53,7 +53,7 @@
             <!-- Language Buttons -->
             <div class="language">
                 <a href="index.php"><button class="active">EN</button></a>
-                <a href="index_fi.php"><button>FI</button></a>
+                <a href="index.php"><button>FI</button></a>
             </div>
 
         </div>
