@@ -49,7 +49,7 @@ include 'header_portal.php';
                     <option value="inquiry">Inquiry Number</option>
                 </select>
 
-                <input type="text" name="q" placeholder="Enter Reference Number" required>
+                <input type="text" name="q" placeholder="Enter Ticket Number" required>
 
                 <button type="submit">Search</button>
             </form>
