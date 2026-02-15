@@ -49,3 +49,14 @@ function validateForm() {
 
     return true;
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contactForm"); // set your form id to contactForm
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
+        if (!validateForm()) {
+            e.preventDefault();
+        }
+    });
+});
