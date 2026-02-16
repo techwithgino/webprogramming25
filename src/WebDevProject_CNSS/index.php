@@ -7,7 +7,7 @@
             CNSS Tech delivers professional IT Network and System Services, along with expert IT Consultancy
             to help businesses stay secure, connected, and efficient.
         </p>
-        <a href="contact.php" class="btn">Get in touch</a>
+        <a href="contactus.php" class="btn">Get in touch</a>
     </div>
 </section>
 
@@ -156,7 +156,7 @@
         </p>
 
         <p class="contact-link">
-            <a href="contact.php">Get in touch with us!</a>
+            <a href="contactus.php">Get in touch with us!</a>
         </p>
 
     </div>
