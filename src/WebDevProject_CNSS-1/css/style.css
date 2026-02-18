@@ -1,6 +1,4 @@
-    /* =========================
-    Base / Layout
-    ========================= */
+
     * { box-sizing: border-box; }
 
     html, body { height: 100%; }
@@ -18,7 +16,6 @@
     flex-direction: column;
     }
 
-    /* shared width wrapper */
     .container{
     width: 100%;
     max-width: 1100px;
@@ -26,9 +23,6 @@
     padding: 0 1rem;
     }
 
-    /* =========================
-    Header (MUST be in BOTH files)
-    ========================= */
     header{
     background: #00887A;
     color: #ffffff;
@@ -76,7 +70,7 @@
     margin-top: 0.2rem;
     }
 
-    /* nav */
+
     .navigation a{
     color: #ffffff;
     margin-left: 1rem;
@@ -85,14 +79,13 @@
     }
     .navigation a:hover{ text-decoration: underline; }
 
-    /* right side */
+
     .header-right{
     display: flex;
     align-items: center;
     gap: 0.6rem;
     }
 
-    /* sign in icon + tooltip */
     .signin-wrapper{ position: relative; }
 
     .signin-link{
@@ -132,7 +125,6 @@
 
     .signin-link:hover .signin-text{ opacity: 1; }
 
-    /* language buttons */
     .language button{
     background: transparent;
     border: 1px solid #ffffff;
@@ -148,9 +140,7 @@
     color: #00887A;
     }
 
-    /* =========================
-    Footer (MUST be in BOTH files)
-    ========================= */
+
     footer{
     margin-top: auto;
     background: #0f172a;
@@ -161,9 +151,7 @@
     }
     footer p{ margin: 0.05rem 0; }
 
-    /* =========================
-    Login Page
-    ========================= */
+
     .login-page{
     display: flex;
     flex-direction: column;
@@ -272,10 +260,7 @@
     }
     }
 
-    /* =========================
-    Admin / Portal / Tables
-    (kept from your original style.css)
-    ========================= */
+
     .dashboard-header{
     background: linear-gradient(135deg, #00887A 0%, #5fd2c8 100%);
     color: #ffffff;
@@ -537,8 +522,28 @@
     font-size: 1rem;
     }
 
-    /* responsive portal cards */
     @media (max-width: 980px){
     .three-card-row{ grid-template-columns: 1fr; }
     .portal-card{ min-height: unset; }
+    }
+
+        .top-action-btn{
+    display: block;
+    background: #00887A;
+    color: #ffffff;
+    padding: 0.85rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    transition: 0.2s ease;
+    cursor: pointer;
+    }
+
+    .top-action-btn:hover{
+    background: #026f65;
+    }
+
+    .top-action-btn:visited{
+    color: #ffffff;
     }
