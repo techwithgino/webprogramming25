@@ -7,7 +7,18 @@
     <title>CNSS Tech | IT Network and System Services</title>
     <meta name="description" content="CNSS Tech provides professional IT Network & System Services and IT Consultancy in Finland."/>
 
-    <link rel="stylesheet" href="css/style.css">
+    <?php
+    $currentPage = basename($_SERVER['PHP_SELF']);
+
+    $useIndexStylePages = ["index.php", "contactus.php"];
+    ?>
+
+    <?php if (in_array($currentPage, $useIndexStylePages)): ?>
+        <link rel="stylesheet" href="css/style_index.css">
+    <?php else: ?>
+        <link rel="stylesheet" href="css/style.css">
+    <?php endif; ?>
+
     <link rel="icon" type="image/png" href="images/10_img_logo.PNG">
 </head>
 
@@ -26,7 +37,7 @@
                 <span class="brand-tagline">Driving Business Forward with Technology</span>
             </div>
         </div>
-    
+
         <div class="navigation">
             <a href="index.php">CNSS Tech</a>
             <a href="index.php#services">Services</a>
@@ -36,13 +47,11 @@
         </div>
 
         <div class="header-right">
-
-            <!-- Sign In Icon FIRST -->
             <div class="signin-wrapper">
                 <a href="login.php" class="signin-link">
-                    <svg class="signin-icon" xmlns="http://www.w3.org/2000/svg" 
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="signin-icon" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="8" r="4"></circle>
                         <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
                     </svg>
@@ -50,12 +59,10 @@
                 </a>
             </div>
 
-            <!-- Language Buttons -->
             <div class="language">
                 <a href="index.php"><button class="active">EN</button></a>
                 <a href="index.php"><button>FI</button></a>
             </div>
-
         </div>
     </div>
 </header>
