@@ -27,7 +27,7 @@
         <div style="text-align:center; margin-top: 0.7rem; font-size: 0.9rem;">
             <p style="margin: 0.2rem 0;">
                 Having trouble signing in?
-                <a href="contact.php" style="color:#00887A; font-weight:bold; text-decoration:none;">Contact us</a>
+                <a href="contactus.php" style="color:#00887A; font-weight:bold; text-decoration:none;">Contact us</a>
             </p>
             <p style="margin: 0.2rem 0;">
                 Don’t have an account yet?
